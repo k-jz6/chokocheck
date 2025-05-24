@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>チョコちゃんチェック！</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700&family=Yusei+Magic&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="app-header">
+            <div class="menu-icon" id="menuIcon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <h1 id="appTitle">チョコちゃん チェック！</h1>
+            <div class="title-background-image" id="titleBackgroundImage">
+                </div>
+        </header>
+
+        <nav class="side-menu" id="sideMenu">
+            <ul>
+                <li><a href="#" id="settingsMenu">設定</a></li>
+                <li><a href="#" id="exportDataMenu">データ出力</a></li>
+            </ul>
+        </nav>
+        <div class="overlay" id="overlay"></div>
+
+
+        <main>
+            <div class="action-buttons">
+                <button class="action-button" id="peeButton">
+                    <img src="https://via.placeholder.com/100x60/FFFFE0/000000?text=おしっこ" alt="おしっこ" id="peeButtonImage">
+                    <span>おしっこ</span>
+                </button>
+                <button class="action-button" id="pooButton">
+                    <img src="https://via.placeholder.com/100x60/D2B48C/FFFFFF?text=うんち" alt="うんち" id="pooButtonImage">
+                    <span>うんち</span>
+                </button>
+            </div>
+
+            <div class="date-selector">
+                <label for="datePicker">日付選択：</label>
+                <input type="date" id="datePicker">
+                <span id="selectedDateDayOfWeek"></span>
+            </div>
+
+            <div class="records-area">
+                <div class="record-column">
+                    <h2 id="peeDate">おしっこ (----/--/--)</h2>
+                    <ul class="record-list" id="peeRecordList">
+                        </ul>
+                </div>
+                <div class="record-column">
+                    <h2 id="pooDate">うんち (----/--/--)</h2>
+                    <ul class="record-list" id="pooRecordList">
+                        </ul>
+                </div>
+            </div>
+        </main>
+
+        <div id="settingsModal" class="modal">
+            <div class="modal-content">
+                <span class="close-button" id="closeSettingsModal">&times;</span>
+                <h3>設定</h3>
+                <div>
+                    <label for="titleBgImageUpload">タイトル背景画像:</label>
+                    <input type="file" id="titleBgImageUpload" accept="image/*">
+                    <img id="titleBgPreview" src="#" alt="背景プレビュー" class="preview-image">
+                </div>
+                <div>
+                    <label for="peeImageUpload">おしっこボタン画像:</label>
+                    <input type="file" id="peeImageUpload" accept="image/*">
+                    <img id="peeImagePreview" src="#" alt="おしっこ画像プレビュー" class="preview-image">
+                </div>
+                <div>
+                    <label for="pooImageUpload">うんちボタン画像:</label>
+                    <input type="file" id="pooImageUpload" accept="image/*">
+                    <img id="pooImagePreview" src="#" alt="うんち画像プレビュー" class="preview-image">
+                </div>
+                <button id="saveSettingsButton">設定を保存</button>
+            </div>
+        </div>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
