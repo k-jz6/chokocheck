@@ -1,0 +1,374 @@
+body {
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding-top: 20px;
+}
+
+.container {
+    width: 90%;
+    max-width: 700px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+.app-header {
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px; 
+}
+
+#appTitle {
+    font-family: 'Yusei Magic', cursive;
+    color: #ff69b4; /* 文字色を濃いピンクに戻す */
+    font-size: 2.5em;
+    margin-top: 10px; 
+    margin-bottom: 15px; 
+    position: relative; 
+    z-index: 2;
+    /* 白い縁取りを太くする */
+    text-shadow: 
+        -2px -2px 0 #FFF,  
+         2px -2px 0 #FFF,
+        -2px  2px 0 #FFF,
+         2px  2px 0 #FFF,
+        -3px  0   0 #FFF, 
+         3px  0   0 #FFF,
+         0   -3px 0 #FFF, 
+         0    3px 0 #FFF;
+}
+
+.title-background-image {
+    position: absolute;
+    top: 0; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%; /* タイトルより広めに */
+    max-width: 420px; /* 最大幅も広めに調整 */
+    height: 100px; 
+    background-image: url('https://via.placeholder.com/420x100/DDDDDD/888888?text=背景画像エリア'); 
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    z-index: 1; 
+    opacity: 0.7; 
+}
+
+
+.menu-icon {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+    z-index: 1001; 
+}
+
+.menu-icon span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 5px 0;
+    transition: 0.3s;
+}
+
+.side-menu {
+    position: fixed; 
+    top: 0;
+    left: -250px; 
+    width: 200px;
+    height: 100%;
+    background-color: #f0f0f0;
+    padding-top: 60px;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    transition: left 0.3s ease;
+    z-index: 1000;
+}
+
+.side-menu.open {
+    left: 0;
+}
+
+.side-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.side-menu ul li a {
+    display: block;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+}
+
+.side-menu ul li a:hover {
+    background-color: #e0e0e0;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 999; 
+}
+
+.overlay.active {
+    display: block;
+}
+
+
+.action-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px; 
+    margin-bottom: 25px;
+}
+
+.action-button {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.1s, box-shadow 0.1s;
+    text-align: center;
+}
+
+.action-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 4px 4px 8px rgba(0,0,0,0.15);
+}
+
+.action-button:active {
+    transform: translateY(0);
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+}
+
+.action-button img {
+    display: block;
+    width: 100px; 
+    height: 60px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    object-fit: cover; 
+}
+
+.action-button span {
+    font-size: 0.9em;
+    color: #555;
+}
+
+.date-selector {
+    text-align: center;
+    margin-bottom: 20px;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+#datePicker {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+    margin-left: 5px; 
+    margin-right: 3px; /* 曜日表示との間隔を少し詰める */
+}
+
+#selectedDateDayOfWeek {
+    margin-left: 0; /* 左マージンをリセット */
+    font-size: 1em;
+    color: #555;
+}
+
+.records-area {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; 
+}
+
+.record-column {
+    width: 48%;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: inset 1px 1px 3px rgba(0,0,0,0.05);
+}
+
+.record-column h2 {
+    font-size: 1.2em;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+.record-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 210px; /* 5件表示できるように高さを調整 (約40px/item * 5 + α) */
+    overflow-y: auto;
+}
+
+.record-list li {
+    background-color: #fff;
+    padding: 8px 12px;
+    margin-bottom: 6px;
+    border-radius: 4px;
+    border: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.95em;
+    line-height: 1.4; /* 1行の高さを確保 */
+}
+
+.record-list li .time-text {
+    cursor: pointer;
+    flex-grow: 1; 
+}
+
+.record-list li .delete-btn {
+    color: red;
+    cursor: pointer;
+    font-weight: bold;
+    margin-left: 10px;
+    padding: 2px 5px; 
+    display: none; 
+    user-select: none; 
+}
+
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1002; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.4); 
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 8px;
+    position: relative;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-content h3 {
+    margin-top: 0;
+}
+.modal-content div {
+    margin-bottom: 15px;
+}
+.modal-content label {
+    display: block;
+    margin-bottom: 5px;
+}
+.modal-content input[type="file"] {
+    margin-bottom: 10px;
+}
+.preview-image {
+    max-width: 100px;
+    max-height: 100px;
+    border: 1px solid #ccc;
+    display: block; 
+    margin-top: 5px;
+}
+#saveSettingsButton {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#saveSettingsButton:hover {
+    background-color: #45a049;
+}
+
+@media (max-width: 600px) {
+    .container {
+        width: 95%;
+        padding: 15px;
+    }
+    #appTitle {
+        font-size: 2em;
+        margin-bottom:10px;
+    }
+    .title-background-image {
+        height: 80px; 
+        width: 90%;
+    }
+    .app-header {
+        margin-bottom: 10px; 
+        padding-bottom: 5px;
+    }
+    .action-buttons {
+        flex-direction: column; 
+        align-items: center;
+        margin-top: 10px; 
+    }
+    .action-button {
+        width: 70%; 
+        margin-bottom: 10px;
+    }
+    .action-button img {
+        width: 80px;
+        height: 50px;
+    }
+    .records-area {
+        flex-direction: column;
+    }
+    .record-column {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    .record-list {
+        max-height: 180px; /* スマホでは少し高さを調整 (4-5件程度) */
+    }
+    .modal-content {
+        margin: 20% auto;
+        width: 90%;
+    }
+}
